@@ -1,0 +1,54 @@
+.mainBlock{
+    margin-left: 65px;
+  
+  }
+
+.resultArea{
+    padding:0;
+  }
+
+.itemTitles{
+    padding: 1rem 0;
+    background-color: #ea952a;
+    font-weight: 700;
+    margin: 1rem 0 0;
+    height: 4rem;
+  } 
+
+
+.resultList{
+    margin: 0;
+    height: 5rem;
+    background-color: rgba(240, 240, 240, 0.932);
+    border: rgb(77, 77, 77) 1px solid;
+    align-items: center;
+}
+
+.detailsCandidateBtn{
+  border: none;
+  border-radius: 5px;
+  color: #285ea2;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+.detailsCandidateBtn:hover{
+  filter: brightness(1.75); 
+}
+
+.deleteCandidateBtn{
+    border: none;
+    border-radius: 5px;
+    color: #BE2F29;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.deleteCandidateBtn:hover{
+  filter: brightness(1.75); 
+}
+
+.btnArea{
+    margin-left: 0px;
+}

@@ -1,0 +1,64 @@
+.mainBlock{
+  margin-left: 65px;
+
+}
+
+.addBtn{
+  background-color: #285ea2;
+  color: white;
+  font-size: 700;
+}
+
+.quizArea{
+  padding: 0;
+} 
+
+.itemTitles{
+  border: #db961f solid 0.25px;
+  font-weight: 700;
+  height: 4rem;
+  background-color: #ea952a;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  margin: 1rem 0 0
+}
+
+
+.edit{
+  color:#285ea2;
+  cursor: pointer;
+  margin-right: 1rem;
+  font-size: larger;
+}
+
+.edit:hover{
+  filter: brightness(1.75); 
+}
+
+.delete{
+  color: #BE2F29;
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: larger;
+}
+
+.delete:hover{
+  filter: brightness(1.75); 
+}
+
+.quizList{
+  border: rgb(233, 233, 233) 0.1rem ridge;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 5rem; 
+}
+
+.icons{
+  display: flex;
+}
+
+.inactive{
+  background-color: #d1d1d1;
+}

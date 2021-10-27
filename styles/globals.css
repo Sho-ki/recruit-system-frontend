@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
+body{
+  font-family: 'Montserrat', sans-serif;
+  word-break: break-word;
+}
+
+.sidenav---sidenav---_2tBP{
+  background: #1A2C42!important;
+  position: fixed!important;
+}
+
+
+.pageTitle{
+  margin-top: 2rem;
+}

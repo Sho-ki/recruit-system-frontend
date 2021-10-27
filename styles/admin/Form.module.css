@@ -1,0 +1,43 @@
+.deleteBtn{
+    border-radius: 10px;
+    border:none;
+    background-color: #e0726e;
+    padding: 7px 10px;
+}
+
+.deleteBtn:hover{
+    filter: brightness(1.5); 
+}
+
+.options{
+    align-items: baseline;
+}
+
+.appendBtn{
+    border-radius: 10px;
+    border:none;
+    background-color: #ea952a;
+    padding: 7px 10px;
+    
+}
+
+.appendBtn:hover{
+    filter: brightness(1.5); 
+}
+
+.submitBtn{
+    font-weight: 700;
+    background-color: #285ea2;
+    border-radius: 5px;
+    border:none; 
+    padding: 0.5rem 2rem;
+    color: aliceblue;
+    cursor: pointer;
+    
+  }
+  
+  .submitBtn:hover{
+    filter: brightness(1.75); 
+    
+  }
+ 

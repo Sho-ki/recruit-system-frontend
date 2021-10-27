@@ -1,0 +1,27 @@
+.showQuiz{
+    display: block;
+}
+
+.quizForm{
+    margin: 2rem 6rem;
+}
+
+.quizForm fieldset{
+    margin-bottom: 4rem;
+}
+
+.quizForm label{
+    margin-left: 1rem;
+}
+
+.notShowQuiz{
+    display: none;
+} 
+
+.notShowInfoArea{
+    display: none;
+}
+
+.showInfoArea{
+    display: block;
+} 

@@ -1,0 +1,55 @@
+.mainBlock{
+    margin-left: 65px;
+  
+  }
+
+  .candidateInfoArea{
+    margin-top: 20px;
+  }
+  
+  .candidateInfoArea p{
+    margin-left: 20px;
+    font-weight: 700;
+    
+  }
+  .resultArea{
+    padding:0;
+  }
+
+  .itemTitles{
+    padding: 1rem 0;
+    background-color: #ea952a;
+    font-weight: 700;
+    margin: 1rem 0 0;
+    height: 4rem;
+  } 
+
+   .correctAns{
+    background-color: rgb(193, 255, 181);
+    padding: 20px 0;
+    margin: 1px 0;
+  }
+  
+  .wrongAns{
+    background-color: rgb(255, 188, 188);
+    padding: 20px 0;
+    margin: 1px 0;
+  
+  }
+
+
+.backBtn{
+  font-weight: 700;
+  background-color: #285ea2;
+  border-radius: 5px;
+  border:none;
+  margin-left: 10px;
+  padding: 1rem 2rem;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.backBtn:hover{
+  filter: brightness(1.75); 
+  
+}
