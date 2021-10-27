@@ -1,13 +1,13 @@
-import React from "react";
-import { useFormContext } from "react-hook-form";
-import Radio from "@mui/material/radio";
+import React from 'react';
+import { useFormContext } from 'react-hook-form';
+import { Radio } from '@material-ui/core';
 
-import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 function CandidatesQuiz({ quizText, optionsList, quizId }) {
   const { register } = useFormContext();
 
-  optionsList = optionsList.split("  /  ");
+  optionsList = optionsList.split('  /  ');
   return (
     <>
       <h4>{quizText}</h4>
