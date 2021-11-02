@@ -6,6 +6,7 @@ import Options from '../../../components/admin/Quizes/FormElement/Options';
 import IndexNumber from '../../../components/admin/Quizes/FormElement/IndexNumber';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useLocation } from 'react-use';
 import { useState } from 'react';
 import axios from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -17,28 +18,25 @@ import useQuiz from '../../../hooks/useQuiz';
 
 function EditForm() {
   const router = useRouter();
-  const id = router.query.id;
+  const quizInfo = router.query;
 
-  const [quizContent, setQuizContent] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isValidEdit, setIsValidEdit] = useState();
   const [candidatesUsingQuiz, setCandidatesUsingQuiz] = useState();
 
-  let defaultValueArr = [];
+  let defaultValueArr = quizInfo.choices.split('  /  ').map((option) => {
+    return { options: option };
+  });
 
   useEffectOnce(async () => {
     try {
       const res = await axios.get(
-        'https://recruit-system.herokuapp.com/quiz-api/' + id
+        'https://recruit-system.herokuapp.com/quiz-api/' + quizInfo.id
       );
       const data = res.data;
 
-      data.result[0].choices.split('  /  ').map((option) => {
-        defaultValueArr.push({ options: option });
-      });
       setIsValidEdit(data.isValidEdit);
       setCandidatesUsingQuiz(data.candidatesUsingQuiz);
-      setQuizContent(data.result[0]);
       setIsLoading(false);
     } catch (e) {
       alert('Something went wrong');
@@ -52,7 +50,7 @@ function EditForm() {
     },
   });
 
-  const { onEditSubmit } = useQuiz({ editQuizId: id });
+  const { onEditSubmit } = useQuiz({ editQuizId: quizInfo.id });
 
   return (
     <>
@@ -73,7 +71,6 @@ function EditForm() {
           crossOrigin='anonymous'
         />
       </Head>
-
       {isLoading && <p>Loading...</p>}
       {!isLoading && defaultValueArr.length > 0 && (
         <FormProvider {...methods}>
@@ -88,17 +85,17 @@ function EditForm() {
               )}
 
               <>
-                <Category category={quizContent.category} />
-                <IsActive isActive={quizContent.is_active} />
+                <Category category={quizInfo.category} />
+                <IsActive isActive={quizInfo.is_active} />
                 <QuizText
-                  quizText={quizContent.quiz_text}
+                  quizText={quizInfo.quiz_text}
                   isValidEdit={isValidEdit}
                 />
                 <Options
-                  isCorrect={quizContent.is_correct}
+                  isCorrect={quizInfo.is_correct}
                   isValidEdit={isValidEdit}
                 />
-                <IndexNumber indexNumber={quizContent.index_number} />
+                <IndexNumber indexNumber={quizInfo.index_number} />
               </>
 
               <div className={`d-flex justify-content-between mb-5`}>
