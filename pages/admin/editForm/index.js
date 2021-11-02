@@ -18,7 +18,7 @@ import useQuiz from '../../../hooks/useQuiz';
 function EditForm() {
   const router = useRouter();
   const id = router.query.id;
-  const [quizContent, setQuizContent] = useState();
+  const [quizContent, setQuizContent] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isValidEdit, setIsValidEdit] = useState();
   const [candidatesUsingQuiz, setCandidatesUsingQuiz] = useState();
