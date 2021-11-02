@@ -18,32 +18,30 @@ import useQuiz from '../../../hooks/useQuiz';
 function EditForm() {
   const router = useRouter();
   const id = router.query.id;
-  const [quizContent, setQuizContent] = useState([]);
+
+  const [quizContent, setQuizContent] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isValidEdit, setIsValidEdit] = useState();
   const [candidatesUsingQuiz, setCandidatesUsingQuiz] = useState();
 
   let defaultValueArr = [];
 
-  useEffectOnce(() => {
-    const getQuiz = async () => {
-      await axios
-        .get('https://recruit-system.herokuapp.com/quiz-api/' + id)
-        .then((response) => {
-          setIsValidEdit(response.data.isValidEdit);
-          setCandidatesUsingQuiz(response.data.candidatesUsingQuiz);
-          response.data.result[0].choices.split('  /  ').map((option) => {
-            defaultValueArr.push({ options: option });
-          });
-          setIsLoading(false);
-          setQuizContent(response.data.result[0]);
-        })
-        .catch(() => {
-          alert('Something went wrong');
-          window.location.href = '/admin/home';
-        });
-    };
-    getQuiz();
+  useEffectOnce(async () => {
+    try {
+      const res = await fetch(
+        'https://recruit-system.herokuapp.com/quiz-api/' + id
+      );
+      const data = await res.json();
+      setIsValidEdit(data.isValidEdit);
+      setCandidatesUsingQuiz(data.candidatesUsingQuiz);
+      data.result[0].choices.split('  /  ').map((option) => {
+        defaultValueArr.push({ options: option });
+      });
+      setQuizContent(data.result[0]);
+      setIsLoading(false);
+    } catch (e) {
+      throw Error(e);
+    }
   });
 
   const methods = useForm({
@@ -73,6 +71,7 @@ function EditForm() {
           crossOrigin='anonymous'
         />
       </Head>
+
       {isLoading && <p>Loading...</p>}
       {!isLoading && (
         <FormProvider {...methods}>
@@ -85,21 +84,20 @@ function EditForm() {
                   {candidatesUsingQuiz.join(',')}
                 </p>
               )}
-              {quizContent && (
-                <>
-                  <Category category={quizContent.category} />
-                  <IsActive isActive={quizContent.is_active} />
-                  <QuizText
-                    quizText={quizContent.quiz_text}
-                    isValidEdit={isValidEdit}
-                  />
-                  <Options
-                    isCorrect={quizContent.is_correct}
-                    isValidEdit={isValidEdit}
-                  />
-                  <IndexNumber indexNumber={quizContent.index_number} />
-                </>
-              )}
+
+              <>
+                <Category category={quizContent.category} />
+                <IsActive isActive={quizContent.is_active} />
+                <QuizText
+                  quizText={quizContent.quiz_text}
+                  isValidEdit={isValidEdit}
+                />
+                <Options
+                  isCorrect={quizContent.is_correct}
+                  isValidEdit={isValidEdit}
+                />
+                <IndexNumber indexNumber={quizContent.index_number} />
+              </>
 
               <div className={`d-flex justify-content-between mb-5`}>
                 <Link href='/admin/home' className='col-2'>
