@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Button, Paper } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import styles from '../../../styles/admin/Home.module.css';
 import SideBarMenu from '../../../components/admin/SideBarMenu';
 import Link from 'next/link';

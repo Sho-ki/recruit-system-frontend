@@ -6,7 +6,6 @@ import Options from '../../../components/admin/Quizes/FormElement/Options';
 import IndexNumber from '../../../components/admin/Quizes/FormElement/IndexNumber';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useLocation } from 'react-use';
 import { useState } from 'react';
 import axios from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';

@@ -6,7 +6,6 @@ import Options from '../../../components/admin/Quizes/FormElement/Options';
 import IndexNumber from '../../../components/admin/Quizes/FormElement/IndexNumber';
 import Link from 'next/link';
 import { useForm, FormProvider } from 'react-hook-form';
-import axios from 'axios';
 import styles from '../../../styles/admin/Form.module.css';
 import { Button } from '@material-ui/core';
 import useQuiz from '../../../hooks/useQuiz';
