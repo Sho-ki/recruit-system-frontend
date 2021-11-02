@@ -24,9 +24,11 @@ function EditForm() {
   const [isValidEdit, setIsValidEdit] = useState();
   const [candidatesUsingQuiz, setCandidatesUsingQuiz] = useState();
 
-  let defaultValueArr = quizInfo.choices.split('  /  ').map((option) => {
-    return { options: option };
-  });
+  let defaultValueArr = String(quizInfo.choices)
+    .split('  /  ')
+    .map((option) => {
+      return { options: option };
+    });
 
   useEffectOnce(async () => {
     try {
