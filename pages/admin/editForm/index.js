@@ -6,7 +6,7 @@ import Options from '../../../components/admin/Quizes/FormElement/Options';
 import IndexNumber from '../../../components/admin/Quizes/FormElement/IndexNumber';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useEffectOnce } from 'react-use';
@@ -28,19 +28,21 @@ function EditForm() {
 
   useEffectOnce(async () => {
     try {
-      const res = await fetch(
+      const res = await axios.get(
         'https://recruit-system.herokuapp.com/quiz-api/' + id
       );
-      const data = await res.json();
-      setIsValidEdit(data.isValidEdit);
-      setCandidatesUsingQuiz(data.candidatesUsingQuiz);
+      const data = res.data;
+
       data.result[0].choices.split('  /  ').map((option) => {
         defaultValueArr.push({ options: option });
       });
+      setIsValidEdit(data.isValidEdit);
+      setCandidatesUsingQuiz(data.candidatesUsingQuiz);
       setQuizContent(data.result[0]);
       setIsLoading(false);
     } catch (e) {
-      throw Error(e);
+      alert('Something went wrong');
+      window.location.href = '/admin/home';
     }
   });
 
@@ -73,7 +75,7 @@ function EditForm() {
       </Head>
 
       {isLoading && <p>Loading...</p>}
-      {!isLoading && (
+      {!isLoading && defaultValueArr.length > 0 && (
         <FormProvider {...methods}>
           <div className={`container ${styles.formField}`}>
             <form onSubmit={methods.handleSubmit(onEditSubmit)}>
