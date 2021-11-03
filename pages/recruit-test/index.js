@@ -47,7 +47,7 @@ export default function Home() {
       const isCorrectList = item.is_correct_list.split(',');
 
       answeredNum !== null
-        ? answeredIdList.push(optionsIdList[answeredNum])
+        ? answeredIdList.push(Number(optionsIdList[answeredNum]))
         : answeredIdList.push(null);
 
       if (isCorrectList[answeredNum] === 'true') {
